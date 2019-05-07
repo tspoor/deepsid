@@ -26,6 +26,9 @@ define('USER_ONLINE',		'[REDACTED]');
 define('PWD_ONLINE',		'[REDACTED]');
 
 define('DB_ERROR',          'A database error has been written to a log regularly monitored by Chordian.');
+define('DB_ERRLOG'), '/deepsid/logs/db_errors_account.txt');
 
 define('TIME_ADJUST',		'+1 hours');				// Added to all use of Date() to match correct time
+
+define('RANDOM_KEY', '[randomstuff]');
 ?>

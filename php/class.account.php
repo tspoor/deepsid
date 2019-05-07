@@ -33,7 +33,7 @@ class Account {
 	/**
 	 * @link	http://tinyurl.com/randstr
 	 */
-	private $rand_key			= 'l9iWfvkvzxBIyKK';
+	private $rand_key			= RANDOM_KEY;
 
 	private $database;
 	private $error_message;
@@ -217,7 +217,7 @@ class Account {
 	 */
 	public function LogActivity($str, $common = false) {
 			$time_ip = date('Y-m-d H:i:s', strtotime(TIME_ADJUST)).' - '.$_SERVER['REMOTE_ADDR'].' - ';
-			file_put_contents($_SERVER['DOCUMENT_ROOT'].'/deepsid/logs/activity.txt', ($common ? '<span style="color:#bbb;">' : '').$time_ip.$str.($common ? '</span>' : '').PHP_EOL, FILE_APPEND);
+			file_put_contents($_SERVER['DOCUMENT_ROOT'].'/logs/activity.txt', ($common ? '<span style="color:#bbb;">' : '').$time_ip.$str.($common ? '</span>' : '').PHP_EOL, FILE_APPEND);
 	}
 
 	/**
@@ -293,7 +293,7 @@ class Account {
 		// We need to know the line number and the name of the function that generated this error
 		$callers = debug_backtrace();
 		// The detailed error is logged to a file on the web server
-		file_put_contents($path.'/deepsid/logs/db_errors_account.txt', $time_and_ip.'Line '.$callers[0]['line'].' in '.$callers[1]['function'].'(): "'.$message.'"'.PHP_EOL.
+		file_put_contents($path. DB_ERRLOG, $time_and_ip.'Line '.$callers[0]['line'].' in '.$callers[1]['function'].'(): "'.$message.'"'.PHP_EOL.
 			'Reason: '.$reason.PHP_EOL.PHP_EOL, FILE_APPEND);
 	}
 
